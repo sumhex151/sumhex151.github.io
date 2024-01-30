@@ -1,1 +1,2 @@
-pass
+LATEST=0.9.5 (Updater for upO Builder!)
+ACTUAL={0.9.4},{0.9.5}
