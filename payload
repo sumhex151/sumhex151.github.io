@@ -2,6 +2,9 @@
 $text = "ваш компютер взломан ваше имя юра"
 $filePath = "$env:TEMP\tempfile.txt"
 $text | Out-File -FilePath $filePath -Encoding Unicode
+if (Test-Path $filePath) {
+    Remove-Item $filePath -Force
+}
 
 # Open Notepad with the temporary text file
 Start-Process notepad.exe $filePath
