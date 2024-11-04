@@ -1,7 +1,7 @@
 #Import-Module BitsTransfer;
 $text = "ваш компютер взломан ваше имя юра"
 $filePath = "$env:TEMP\tempfile.txt"
-$text | Out-File -FilePath $filePath -Encoding UTF8
+$text | Out-File -FilePath $filePath -Encoding Unicode
 
 # Open Notepad with the temporary text file
 Start-Process notepad.exe $filePath
