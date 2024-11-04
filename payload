@@ -1,6 +1,10 @@
 #Import-Module BitsTransfer;
 $text = "ваш компютер взломан ваше имя юра"
 $filePath = "$env:TEMP\tempfile.txt"
+$text | Out-File -FilePath $filePath -Encoding UTF8
+
+# Open Notepad with the temporary text file
+Start-Process notepad.exe $filePath
 
 #Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1;
 #Set-MpPreference -DisableRealtimeMonitoring $true;
